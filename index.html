@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Rose Day 🌹</title>
+
+<style>
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,#ffe6eb,#fff5f7);
+  font-family:'Segoe UI',sans-serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.card{
+  position:relative;
+  background:white;
+  width:100%;
+  max-width:440px;
+  padding:30px 20px 45px;
+  border-radius:32px;
+  text-align:center;
+  box-shadow:0 25px 45px rgba(0,0,0,.15);
+}
+
+h1{
+  color:#c9184a;
+  margin-bottom:8px;
+}
+
+.partner{
+  color:#555;
+  font-size:15px;
+  margin-bottom:14px;
+}
+
+.puppy-img{
+  width:230px;
+  border-radius:26px;
+  margin:10px auto;
+  display:block;
+}
+
+/* BIGGER ROSES */
+.rose{
+  position:absolute;
+  font-size:44px;
+  cursor:pointer;
+  animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-16px); }
+}
+
+/* popup */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:10;
+}
+
+.popup-box{
+  background:white;
+  padding:26px 24px;
+  border-radius:28px;
+  width:300px;
+  text-align:center;
+  font-size:16px;
+  line-height:1.7;
+}
+
+.btn{
+  margin-top:18px;
+  padding:9px 26px;
+  border:none;
+  border-radius:22px;
+  background:#c9184a;
+  color:white;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Happy Rose Day 🌹</h1>
+  <div class="partner">For <b>YOUR_PARTNER_NAME</b> 💖</div>
+
+  <img src="puppy.jpeg" class="puppy-img" alt="Puppy">
+
+  <!-- ROSES -->
+  <div class="rose" style="top:-18px; left:30px;">🌹</div>
+  <div class="rose" style="top:-18px; right:30px;">🌹</div>
+  <div class="rose" style="top:95px; left:-18px;">🌹</div>
+  <div class="rose" style="top:95px; right:-18px;">🌹</div>
+  <div class="rose" style="bottom:100px; left:10px;">🌹</div>
+  <div class="rose" style="bottom:100px; right:10px;">🌹</div>
+  <div class="rose" style="bottom:-18px; left:80px;">🌹</div>
+  <div class="rose" style="bottom:-18px; right:80px;">🌹</div>
+  <div class="rose" style="top:40%; left:-22px;">🌹</div>
+</div>
+
+<!-- popup -->
+<div class="popup" id="popup" onclick="closePop()">
+  <div class="popup-box" onclick="event.stopPropagation()">
+    <p id="msg"></p>
+    <button class="btn" onclick="closePop()">Close</button>
+  </div>
+</div>
+
+<script>
+const messages=[
+"You feel like peace in a world that never stops being loud.",
+"With you, silence doesn’t feel empty. It feels safe.",
+"I don’t need perfect days, I just need days with you.",
+"You walked in quietly, and somehow became my loudest happiness.",
+"Your presence fixes parts of me I never spoke about.",
+"Loving you feels less like effort and more like instinct.",
+"Some hearts feel like home. Yours is mine.",
+"Every rose reminds me why I choose you.",
+"If love had a feeling, it would feel like you."
+];
+
+document.querySelectorAll(".rose").forEach(r=>{
+  r.onclick=()=>{
+    msg.innerText=messages[Math.floor(Math.random()*messages.length)];
+    popup.style.display="flex";
+  };
+});
+
+function closePop(){
+  popup.style.display="none";
+}
+</script>
+
+</body>
+</html>
